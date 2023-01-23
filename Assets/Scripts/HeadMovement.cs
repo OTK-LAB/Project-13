@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class HeadMovement : MonoBehaviour
 {
-      public float speed, rotationSpeed;
+      public SnakeManager snakeManager;
       private PlayerControls playerControls;
-      public Vector3 moveVector;
+
       // Start is called before the first frame update
       private void Awake()
       {
@@ -25,12 +25,12 @@ public class HeadMovement : MonoBehaviour
       private void FixedUpdate()
       {
             Vector2 movementInput = playerControls.Player.Move.ReadValue<Vector2>();
-            moveVector = new Vector3(movementInput.x, 0f, movementInput.y);
-            this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(moveVector.x * speed, 0, moveVector.z * speed);
+            snakeManager.moveVector = new Vector3(movementInput.x, 0f, movementInput.y);
+            this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(snakeManager.moveVector.x * snakeManager.speed, 0, snakeManager.moveVector.z * snakeManager.speed);
 
-            if (moveVector != Vector3.zero)
+            if (snakeManager.moveVector != Vector3.zero)
             {
-                  this.gameObject.transform.forward = moveVector;
+                  this.gameObject.transform.forward = snakeManager.moveVector;
             }
       }
 

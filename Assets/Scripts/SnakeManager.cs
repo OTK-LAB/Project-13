@@ -5,41 +5,49 @@ using UnityEngine;
 public class SnakeManager : MonoBehaviour
 {
       public List<GameObject> bodyParts = new List<GameObject>();
-
       public GameObject SnakeHead;
-
-      public float minDistance = 0.5f;
-      public GameObject bodyPrefab;
-
+      public float minDistanceBetween;
+      private float minDistance = 0.75f;
+      public int MaxBodyPartsCount;
       private float dis;
       private GameObject curBodyPart;
       private GameObject prevBodyPart;
-
+      public ScaleManager scale;
+      public GameObject BodyPartPrefab;
+      public float speed;
+      public Vector3 moveVector;
       private void Start()
       {
             Application.targetFrameRate = 60;
-
       }
       void FixedUpdate()
       {
-            this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.localScale.y / 2, this.gameObject.transform.position.z);
+            if (scale.Point / 50 >= bodyParts.Count && bodyParts.Count < MaxBodyPartsCount)
+            {
+                  GameObject obj = Instantiate(BodyPartPrefab, Vector3.zero, Quaternion.identity);
+                  bodyParts.Add(obj);
+                  obj.transform.SetParent(this.gameObject.transform.parent.transform);
+            }
+            minDistance = minDistanceBetween * SnakeHead.transform.localScale.x * SnakeHead.transform.localScale.x;
+            this.gameObject.transform.localPosition = new Vector3(this.gameObject.transform.localPosition.x, this.gameObject.transform.localScale.y / 2, this.gameObject.transform.localPosition.z);
             for (int i = 1; i < bodyParts.Count; i++)
             {
+                  bodyParts[i].transform.localScale = SnakeHead.transform.localScale * 0.75f;
                   curBodyPart = bodyParts[i];
                   prevBodyPart = bodyParts[i - 1];
 
-                  dis = Vector3.Distance(prevBodyPart.transform.position, curBodyPart.transform.position);
+                  dis = Vector3.Distance(prevBodyPart.transform.localPosition, curBodyPart.transform.localPosition);
 
 
-                  float T = Time.deltaTime * (dis / minDistance) * SnakeHead.GetComponent<HeadMovement>().speed
-                   * Mathf.Sqrt(Mathf.Pow(SnakeHead.GetComponent<HeadMovement>().moveVector.x, 2) + Mathf.Pow(SnakeHead.GetComponent<HeadMovement>().moveVector.z, 2));
+                  float T = Time.deltaTime * (dis / minDistance) * speed
+                   * Mathf.Sqrt(Mathf.Pow(moveVector.x, 2) + Mathf.Pow(moveVector.z, 2));
 
                   if (T >= 0.5f)
                   {
                         T = 0.5f;
                   }
 
-                  curBodyPart.transform.position = Vector3.Slerp(curBodyPart.transform.position, prevBodyPart.transform.position, T);
+                  curBodyPart.transform.localPosition = Vector3.Slerp(curBodyPart.transform.localPosition, prevBodyPart.transform.localPosition, T);
                   curBodyPart.transform.rotation = Quaternion.Slerp(curBodyPart.transform.rotation, prevBodyPart.transform.rotation, T);
             }
       }

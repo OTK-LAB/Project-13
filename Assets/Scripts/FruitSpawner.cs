@@ -15,10 +15,10 @@ public class FruitSpawner : MonoBehaviour
             time += Time.deltaTime;
             if (time >= duration)
             {
-                  if (FruitObjects.Count < 50)
+                  float scaleX = GameArena.transform.localScale.x;
+                  if (FruitObjects.Count < 100 * scaleX)
                   {
                         time -= duration;
-                        float scaleX = GameArena.transform.localScale.x;
                         float x = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
                         float z = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
                         GameObject fruit = Instantiate(FruitPrefabs[Random.Range(0, FruitPrefabs.Count)], new Vector3(x, 0.5f, z), Quaternion.identity);
