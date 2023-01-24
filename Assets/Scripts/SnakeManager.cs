@@ -16,17 +16,19 @@ public class SnakeManager : MonoBehaviour
       public GameObject BodyPartPrefab;
       public float speed;
       public Vector3 moveVector;
+      public FruitSpawner fruitSpawner;
+      public EnemySpawner EnemySpawner;
       private void Start()
       {
             Application.targetFrameRate = 60;
       }
       void FixedUpdate()
       {
-            if (scale.Point / 50 >= bodyParts.Count && bodyParts.Count < MaxBodyPartsCount)
+            if (scale.Point / 20 >= bodyParts.Count - 1 && bodyParts.Count < MaxBodyPartsCount)
             {
-                  GameObject obj = Instantiate(BodyPartPrefab, Vector3.zero, Quaternion.identity);
+                  GameObject obj = Instantiate(BodyPartPrefab, bodyParts[bodyParts.Count - 1].transform.position, Quaternion.identity);
                   bodyParts.Add(obj);
-                  obj.transform.SetParent(this.gameObject.transform.parent.transform);
+                  obj.transform.SetParent(this.gameObject.transform);
             }
             minDistance = minDistanceBetween * SnakeHead.transform.localScale.x * SnakeHead.transform.localScale.x;
             this.gameObject.transform.localPosition = new Vector3(this.gameObject.transform.localPosition.x, this.gameObject.transform.localScale.y / 2, this.gameObject.transform.localPosition.z);

@@ -6,22 +6,21 @@ public class AIHeadMovement : MonoBehaviour
 {
       private bool Selected = false;
       public Vector3 DesiredPoint;
-
       public SnakeManager snakeManager;
-      public FruitSpawner fruitSpawner;
+
 
 
       void FixedUpdate()
       {
-            if (!Selected && fruitSpawner.FruitObjects.Count > 10)
+            if (!Selected && snakeManager.fruitSpawner.FruitObjects.Count > 10)
             {
-                  Vector3 fruitpos = fruitSpawner.FruitObjects[Random.Range(0, fruitSpawner.FruitObjects.Count)].transform.position; ;
+                  Vector3 fruitpos = snakeManager.fruitSpawner.FruitObjects[Random.Range(0, snakeManager.fruitSpawner.FruitObjects.Count)].transform.position;
                   DesiredPoint = new Vector3(fruitpos.x, 0, fruitpos.z);
                   Selected = true;
             }
-            else if (fruitSpawner.FruitObjects.Count > 0 && DesiredPoint != null)
+            else if (Selected && snakeManager.fruitSpawner.FruitObjects.Count > 0 && DesiredPoint != null)
             {
-                  if (Vector3.Distance(transform.localPosition, DesiredPoint) < 1)
+                  if (Vector3.Distance(transform.localPosition, DesiredPoint) < 1 * snakeManager.SnakeHead.transform.localScale.x)
                   {
                         Selected = false;
                   }
