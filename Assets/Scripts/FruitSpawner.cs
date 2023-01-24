@@ -29,10 +29,8 @@ public class FruitSpawner : MonoBehaviour
       }
       public void onGet(GameObject obj)
       {
-            float scaleX = GameArena.transform.localScale.x;
-            float x = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
-            float z = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
-            obj.transform.position = new Vector3(x, 0, z);
+            Vector3 RandomPos = Formulas.RandomFormulas.ChooseRandomSpotInArena(GameArena);
+            obj.transform.position = new Vector3(RandomPos.x, 0, RandomPos.z);
             obj.gameObject.SetActive(true);
             FruitObjects.Add(obj);
       }

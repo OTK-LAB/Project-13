@@ -30,4 +30,14 @@ namespace Formulas
                   return Mathf.Cos(Degrees);
             }
       }
+      public static class RandomFormulas
+      {
+            public static Vector3 ChooseRandomSpotInArena(GameObject GameArena)
+            {
+                  float scaleX = GameArena.transform.localScale.x;
+                  float x = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
+                  float z = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
+                  return new Vector3(x, 0, z);
+            }
+      }
 }

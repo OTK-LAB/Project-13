@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2259763ddde78449b9f363f041f842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Point: 100
+  Point: 0
 --- !u!54 &7216427218445994586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -301,15 +301,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2390bb98b574943bbed32dfea652bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitSpawner: {fileID: 0}
+  EnemySpawner: {fileID: 0}
+  scale: {fileID: 7216427218445994584}
   bodyParts:
   - {fileID: 7216427218445994591}
   - {fileID: 7216427218422451740}
+  BodyPartPrefab: {fileID: 7216427218422451740}
   SnakeHead: {fileID: 7216427218445994591}
   minDistanceBetween: 0.25
   MaxBodyPartsCount: 10
-  scale: {fileID: 7216427218445994584}
-  BodyPartPrefab: {fileID: 7216427218422451740}
   speed: 5
   moveVector: {x: 0, y: 0, z: 0}
-  fruitSpawner: {fileID: 0}
-  EnemySpawner: {fileID: 0}
+  PointPerBody: 30

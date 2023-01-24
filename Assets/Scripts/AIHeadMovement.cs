@@ -8,15 +8,11 @@ public class AIHeadMovement : MonoBehaviour
       public Vector3 DesiredPoint;
       public SnakeManager snakeManager;
 
-
-
       void FixedUpdate()
       {
             if (!Selected && snakeManager.fruitSpawner.FruitObjects.Count > 10)
             {
-                  Vector3 fruitpos = snakeManager.fruitSpawner.FruitObjects[Random.Range(0, snakeManager.fruitSpawner.FruitObjects.Count)].transform.position;
-                  DesiredPoint = new Vector3(fruitpos.x, 0, fruitpos.z);
-                  Selected = true;
+                  ChooseRandomFruitPosition();
             }
             else if (Selected && snakeManager.fruitSpawner.FruitObjects.Count > 0 && DesiredPoint != null)
             {
@@ -24,15 +20,23 @@ public class AIHeadMovement : MonoBehaviour
                   {
                         Selected = false;
                   }
-                  float Deg = VectorFormulas.getAngleInDeg(DesiredPoint, transform.localPosition);
-                  snakeManager.moveVector = new Vector3(VectorFormulas.getXValueOfDeg(Deg), 0f, VectorFormulas.getYValueOfDeg(Deg));
-                  this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(snakeManager.moveVector.x * snakeManager.speed, 0, snakeManager.moveVector.z * snakeManager.speed);
-                  if (snakeManager.moveVector != Vector3.zero)
-                  {
-                        this.gameObject.transform.forward = snakeManager.moveVector;
-                  }
-
+                  MoveEnemy();
             }
-
+      }
+      public void ChooseRandomFruitPosition()
+      {
+            Vector3 fruitpos = snakeManager.fruitSpawner.FruitObjects[Random.Range(0, snakeManager.fruitSpawner.FruitObjects.Count)].transform.position;
+            DesiredPoint = new Vector3(fruitpos.x, 0, fruitpos.z);
+            Selected = true;
+      }
+      public void MoveEnemy()
+      {
+            float Deg = VectorFormulas.getAngleInDeg(DesiredPoint, transform.localPosition);
+            snakeManager.moveVector = new Vector3(VectorFormulas.getXValueOfDeg(Deg), 0f, VectorFormulas.getYValueOfDeg(Deg));
+            this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(snakeManager.moveVector.x * snakeManager.speed, 0, snakeManager.moveVector.z * snakeManager.speed);
+            if (snakeManager.moveVector != Vector3.zero)
+            {
+                  this.gameObject.transform.forward = snakeManager.moveVector;
+            }
       }
 }

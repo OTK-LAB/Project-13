@@ -193,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304059876}
   m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 4.5, z: -5}
+  m_LocalPosition: {x: 0, y: -5.8999977, z: 5.3999977}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 1652656584}
   - component: {fileID: 1652656582}
   - component: {fileID: 1652656583}
+  - component: {fileID: 1652656585}
   m_Layer: 0
   m_Name: Snake Head
   m_TagString: Player
@@ -634,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 20, z: -20}
+  m_FollowOffset: {x: 0, y: 36.47058, z: -36.47058}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -977,7 +978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.36581522, y: 0.000000032027526, z: -0.000000012588711, w: 0.93068755}
-  m_LocalPosition: {x: 0, y: 20.5, z: -20}
+  m_LocalPosition: {x: 0, y: 30.9, z: -30.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1191,7 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 20, z: -20}
+  m_FollowOffset: {x: 0, y: 36.47058, z: -36.47058}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1354,10 +1355,10 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0
   m_Orbits:
-  - m_Height: 4.5
-    m_Radius: 1.75
-  - m_Height: 20
-    m_Radius: 20
+  - m_Height: 123.2
+    m_Radius: 123.2
+  - m_Height: 36.47058
+    m_Radius: 36.47058
   - m_Height: 0.4
     m_Radius: 1.3
   m_LegacyHeadingBias: 3.4028235e+38
@@ -1373,7 +1374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206933236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20.5, z: -20}
+  m_LocalPosition: {x: 0, y: 30.9, z: -30.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1598,7 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 20, z: -20}
+  m_FollowOffset: {x: 0, y: 36.47058, z: -36.47058}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1917,7 +1918,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2259763ddde78449b9f363f041f842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Point: 100
+  Point: 0
+--- !u!114 &1652656585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652216944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd269294e4de5d49858ef05c7e43a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineFreeLook: {fileID: 1206933237}
+  cameraValue: 20
 --- !u!1 &1766905576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,7 +2099,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792801900}
-  m_LocalRotation: {x: 0.34887102, y: -3e-45, z: 1e-45, w: 0.9371708}
+  m_LocalRotation: {x: 0.34887102, y: -0.000000016740518, z: 0.0000000062318213, w: 0.9371708}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2219,18 +2234,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2390bb98b574943bbed32dfea652bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitSpawner: {fileID: 344015757}
+  EnemySpawner: {fileID: 344015758}
+  scale: {fileID: 1652656584}
   bodyParts:
   - {fileID: 652216944}
   - {fileID: 1766905576}
+  BodyPartPrefab: {fileID: 1766905576}
   SnakeHead: {fileID: 652216944}
   minDistanceBetween: 0.25
   MaxBodyPartsCount: 10
-  scale: {fileID: 1652656584}
-  BodyPartPrefab: {fileID: 1766905576}
   speed: 15
   moveVector: {x: 0, y: 0, z: 0}
-  fruitSpawner: {fileID: 344015757}
-  EnemySpawner: {fileID: 344015758}
+  PointPerBody: 30
 --- !u!1 &2068354597
 GameObject:
   m_ObjectHideFlags: 0

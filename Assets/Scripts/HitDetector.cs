@@ -15,8 +15,10 @@ public class HitDetector : MonoBehaviour
             }
             else if (other.gameObject.tag == "Player" && !snakeManager.bodyParts.Contains(other.gameObject))
             {
-                  snakeManager.EnemySpawner.EnemyList.Remove(this.gameObject.transform.parent.gameObject);
-                  Destroy(this.gameObject.transform.parent.gameObject);
+                  GameObject parent = this.gameObject.transform.parent.gameObject;
+                  snakeManager.EnemySpawner.EnemyList.Remove(parent);
+                  other.gameObject.transform.parent.GetComponent<SnakeManager>().scale.Point += snakeManager.scale.Point;
+                  Destroy(parent);
             }
       }
 

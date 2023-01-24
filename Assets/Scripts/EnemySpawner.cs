@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Formulas;
 public class EnemySpawner : MonoBehaviour
 {
       public float duration;
@@ -9,12 +9,7 @@ public class EnemySpawner : MonoBehaviour
       public GameObject GameArena, EnemyPrefab;
       public List<GameObject> EnemyList;
       public int maxSize;
-      void Start()
-      {
 
-      }
-
-      // Update is called once per frame
       void Update()
       {
             time += Time.deltaTime;
@@ -22,23 +17,24 @@ public class EnemySpawner : MonoBehaviour
             {
                   if (EnemyList.Count < 1000)
                   {
-                        float scaleX = GameArena.transform.localScale.x;
-                        float x = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
-                        float z = Random.Range(-50.5f * scaleX, 50.5f * scaleX);
-                        GameObject obj = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity);
-                        SnakeManager snakeManager = obj.GetComponent<SnakeManager>();
-                        snakeManager.SnakeHead.transform.position = new Vector3(x, 0, z);
-                        foreach (GameObject child in snakeManager.bodyParts)
-                        {
-                              child.transform.position = new Vector3(x, 0, z);
-                        }
-                        EnemyList.Add(obj);
-                        snakeManager.fruitSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<FruitSpawner>();
-                        snakeManager.EnemySpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawner>();
+                        CreateEnemy();
                         time -= duration;
                   }
 
             }
-
+      }
+      void CreateEnemy()
+      {
+            Vector3 RandomPos = Formulas.RandomFormulas.ChooseRandomSpotInArena(GameArena);
+            GameObject obj = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity);
+            SnakeManager snakeManager = obj.GetComponent<SnakeManager>();
+            snakeManager.SnakeHead.transform.position = new Vector3(RandomPos.x, 0, RandomPos.z);
+            foreach (GameObject child in snakeManager.bodyParts)
+            {
+                  child.transform.position = new Vector3(RandomPos.x, 0, RandomPos.z);
+            }
+            snakeManager.fruitSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<FruitSpawner>();
+            snakeManager.EnemySpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawner>();
+            EnemyList.Add(obj);
       }
 }

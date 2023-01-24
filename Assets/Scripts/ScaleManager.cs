@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ScaleManager : MonoBehaviour
 {
       public int Point;
 
-
-      // Update is called once per frame
       void Update()
       {
             this.gameObject.transform.localScale = Vector3.one + Vector3.one * ((float)Point / 50f);
@@ -15,5 +14,6 @@ public class ScaleManager : MonoBehaviour
             {
                   this.gameObject.transform.localScale = Vector3.one * 5;
             }
+
       }
 }
