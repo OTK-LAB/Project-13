@@ -5,38 +5,39 @@ using Formulas;
 public class AIHeadMovement : MonoBehaviour
 {
       private bool Selected = false;
-      public Vector3 DesiredPoint;
+      public Vector3 desiredPoint;
       public SnakeManager snakeManager;
+
 
       void FixedUpdate()
       {
-            if (!Selected && snakeManager.fruitSpawner.FruitObjects.Count > 10)
-            {
+            Vector3 distanceVector = desiredPoint - snakeManager.head.transform.position;
+            float distance = distanceVector.sqrMagnitude;
+
+            if (!Selected)
                   ChooseRandomFruitPosition();
-            }
-            else if (Selected && snakeManager.fruitSpawner.FruitObjects.Count > 0 && DesiredPoint != null)
-            {
-                  if (Vector3.Distance(transform.localPosition, DesiredPoint) < 1 * snakeManager.SnakeHead.transform.localScale.x)
-                  {
-                        Selected = false;
-                  }
+            else
                   MoveEnemy();
-            }
+
+      }
+      private void Update()
+      {
+            Vector3 distanceVector = desiredPoint - snakeManager.head.transform.position;
+            float distance = distanceVector.sqrMagnitude;
+            Debug.Log(distance);
+            if (distance < Mathf.Pow(snakeManager.speed, 2) * 2)
+                  Selected = false;
       }
       public void ChooseRandomFruitPosition()
       {
-            Vector3 fruitpos = snakeManager.fruitSpawner.FruitObjects[Random.Range(0, snakeManager.fruitSpawner.FruitObjects.Count)].transform.position;
-            DesiredPoint = new Vector3(fruitpos.x, 0, fruitpos.z);
+            Vector3 fruitpos = GameManager.instance.fruitSpawner.fruitObjects[Random.Range(0, GameManager.instance.fruitSpawner.fruitObjects.Count)].transform.position;
+            desiredPoint = new Vector3(fruitpos.x, 0, fruitpos.z);
             Selected = true;
       }
       public void MoveEnemy()
       {
-            float Deg = VectorFormulas.getAngleInDeg(DesiredPoint, transform.localPosition);
-            snakeManager.moveVector = new Vector3(VectorFormulas.getXValueOfDeg(Deg), 0f, VectorFormulas.getYValueOfDeg(Deg));
-            this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(snakeManager.moveVector.x * snakeManager.speed, 0, snakeManager.moveVector.z * snakeManager.speed);
-            if (snakeManager.moveVector != Vector3.zero)
-            {
-                  this.gameObject.transform.forward = snakeManager.moveVector;
-            }
+            Vector3 direction = desiredPoint - snakeManager.head.transform.position;
+            snakeManager.rb.velocity = new Vector3(direction.normalized.x, 0f, direction.normalized.z) * snakeManager.speed;
+
       }
 }

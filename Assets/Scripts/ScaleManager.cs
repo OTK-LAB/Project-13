@@ -6,7 +6,6 @@ using Cinemachine;
 public class ScaleManager : MonoBehaviour
 {
       public int Point;
-
       void Update()
       {
             this.gameObject.transform.localScale = Vector3.one + Vector3.one * ((float)Point / 50f);

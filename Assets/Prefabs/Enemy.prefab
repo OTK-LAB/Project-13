@@ -109,10 +109,8 @@ GameObject:
   - component: {fileID: 7216427218445994582}
   - component: {fileID: 7216427218445994581}
   - component: {fileID: 7216427218445994580}
-  - component: {fileID: 7216427218445994584}
   - component: {fileID: 7216427218445994586}
   - component: {fileID: 7216427218445994585}
-  - component: {fileID: 7216427218445994576}
   m_Layer: 0
   m_Name: Snake Head
   m_TagString: Player
@@ -148,7 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeManager: {fileID: 7216427218676998542}
-  scaleManager: {fileID: 7216427218445994584}
 --- !u!33 &7216427218445994581
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -199,19 +196,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7216427218445994584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7216427218445994591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2259763ddde78449b9f363f041f842, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Point: 0
 --- !u!54 &7216427218445994586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,20 +225,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.49999997
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7216427218445994576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7216427218445994591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20e1f3e1bd5e894198d9ddea9420202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DesiredPoint: {x: 0, y: 0, z: 0}
-  snakeManager: {fileID: 7216427218676998542}
 --- !u!1 &7216427218676998541
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7216427218676998543}
   - component: {fileID: 7216427218676998542}
+  - component: {fileID: 4289964587434425168}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Player
@@ -301,16 +272,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2390bb98b574943bbed32dfea652bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitSpawner: {fileID: 0}
-  EnemySpawner: {fileID: 0}
-  scale: {fileID: 7216427218445994584}
   bodyParts:
   - {fileID: 7216427218445994591}
   - {fileID: 7216427218422451740}
-  BodyPartPrefab: {fileID: 7216427218422451740}
-  SnakeHead: {fileID: 7216427218445994591}
-  minDistanceBetween: 0.25
-  MaxBodyPartsCount: 10
-  speed: 5
-  moveVector: {x: 0, y: 0, z: 0}
-  PointPerBody: 30
+  bodyPartPrefab: {fileID: 7216427218422451740}
+  head: {fileID: 7216427218445994591}
+  rb: {fileID: 7216427218445994586}
+  speed: 2
+  minDistanceBetween: 1
+--- !u!114 &4289964587434425168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216427218676998541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20e1f3e1bd5e894198d9ddea9420202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredPoint: {x: 0, y: 0, z: 0}
+  snakeManager: {fileID: 7216427218676998542}

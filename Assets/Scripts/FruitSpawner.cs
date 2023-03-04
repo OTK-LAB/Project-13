@@ -6,14 +6,14 @@ public class FruitSpawner : MonoBehaviour
 {
       public float duration;
       public float time;
-      public GameObject GameArena;
-      public List<GameObject> FruitPrefabs;
-      public List<GameObject> FruitObjects;
-      public IObjectPool<GameObject> FruitObjectsPool;
+      public GameObject gameArena;
+      public List<GameObject> fruitPrefabs;
+      public List<GameObject> fruitObjects;
+      public IObjectPool<GameObject> fruitObjectsPool;
       public int maxSize;
       private void Awake()
       {
-            FruitObjectsPool = new ObjectPool<GameObject>(
+            fruitObjectsPool = new ObjectPool<GameObject>(
                   createFunc,
                   onGet,
                   onRelease,
@@ -24,24 +24,24 @@ public class FruitSpawner : MonoBehaviour
       }
       public void onDestroy(GameObject obj)
       {
-            FruitObjects.Remove(obj);
+            fruitObjects.Remove(obj);
             Destroy(obj);
       }
       public void onGet(GameObject obj)
       {
-            Vector3 RandomPos = Formulas.RandomFormulas.ChooseRandomSpotInArena(GameArena);
-            obj.transform.position = new Vector3(RandomPos.x, 0, RandomPos.z);
+            Vector3 RandomPos = Formulas.RandomFormulas.ChooseRandomSpotInArena(gameArena);
+            obj.transform.position = new Vector3(RandomPos.x, 0.5f, RandomPos.z);
             obj.gameObject.SetActive(true);
-            FruitObjects.Add(obj);
+            fruitObjects.Add(obj);
       }
       public void onRelease(GameObject obj)
       {
             obj.gameObject.SetActive(false);
-            FruitObjects.Remove(obj);
+            fruitObjects.Remove(obj);
       }
       public GameObject createFunc()
       {
-            GameObject fruit = Instantiate(FruitPrefabs[Random.Range(0, FruitPrefabs.Count)], Vector3.zero, Quaternion.identity);
+            GameObject fruit = Instantiate(fruitPrefabs[Random.Range(0, fruitPrefabs.Count)], Vector3.zero, Quaternion.identity);
             return fruit;
       }
       void Update()
@@ -49,9 +49,9 @@ public class FruitSpawner : MonoBehaviour
             time += Time.deltaTime;
             if (time >= duration)
             {
-                  if (FruitObjects.Count < 1000)
+                  if (fruitObjects.Count < 1000)
                   {
-                        FruitObjectsPool.Get();
+                        fruitObjectsPool.Get();
                         time -= duration;
                   }
 

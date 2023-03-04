@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
             time += Time.deltaTime;
             if (time >= duration)
             {
-                  if (EnemyList.Count < 1000)
+                  if (EnemyList.Count < maxSize)
                   {
                         CreateEnemy();
                         time -= duration;
@@ -26,15 +26,11 @@ public class EnemySpawner : MonoBehaviour
       void CreateEnemy()
       {
             Vector3 RandomPos = Formulas.RandomFormulas.ChooseRandomSpotInArena(GameArena);
-            GameObject obj = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity);
+            Vector3 spawnPos = new Vector3(RandomPos.x, 0, RandomPos.z);
+            GameObject obj = Instantiate(EnemyPrefab, new Vector3(0, 0.5f, 0), Quaternion.identity);
             SnakeManager snakeManager = obj.GetComponent<SnakeManager>();
-            snakeManager.SnakeHead.transform.position = new Vector3(RandomPos.x, 0, RandomPos.z);
-            foreach (GameObject child in snakeManager.bodyParts)
-            {
-                  child.transform.position = new Vector3(RandomPos.x, 0, RandomPos.z);
-            }
-            snakeManager.fruitSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<FruitSpawner>();
-            snakeManager.EnemySpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawner>();
+            snakeManager.head.transform.position = spawnPos;
+            foreach (GameObject part in snakeManager.bodyParts) part.transform.position = spawnPos;
             EnemyList.Add(obj);
       }
 }
