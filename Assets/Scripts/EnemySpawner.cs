@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
       void CreateEnemy()
       {
             Vector3 RandomPos = Formulas.RandomFormulas.ChooseRandomSpotInArena(GameArena);
-            Vector3 spawnPos = new Vector3(RandomPos.x, 0, RandomPos.z);
+            Vector3 spawnPos = new Vector3(RandomPos.x, 0.5f, RandomPos.z);
             GameObject obj = Instantiate(EnemyPrefab, new Vector3(0, 0.5f, 0), Quaternion.identity);
             SnakeManager snakeManager = obj.GetComponent<SnakeManager>();
             snakeManager.head.transform.position = spawnPos;

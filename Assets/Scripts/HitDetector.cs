@@ -8,9 +8,7 @@ public class HitDetector : MonoBehaviour
       private void OnTriggerEnter(Collider other)
       {
             if (other.gameObject.tag == "Fruit")
-            {
                   GameManager.instance.fruitSpawner.fruitObjectsPool.Release(other.gameObject);
-            }
             else if (other.gameObject.tag == "Player" && !snakeManager.bodyParts.Contains(other.gameObject))
             {
                   GameObject parent = this.gameObject.transform.parent.gameObject;

@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour
             Vector2 movementInput = playerControls.Player.Move.ReadValue<Vector2>();
             Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y);
             rb.velocity = direction * snakeManager.speed;
+
       }
 
 }

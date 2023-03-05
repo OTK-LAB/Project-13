@@ -24,7 +24,7 @@ public class AIHeadMovement : MonoBehaviour
       {
             Vector3 distanceVector = desiredPoint - snakeManager.head.transform.position;
             float distance = distanceVector.sqrMagnitude;
-            Debug.Log(distance);
+
             if (distance < Mathf.Pow(snakeManager.speed, 2) * 2)
                   Selected = false;
       }

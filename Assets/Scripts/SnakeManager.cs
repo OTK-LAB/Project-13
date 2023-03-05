@@ -14,6 +14,7 @@ public class SnakeManager : MonoBehaviour
       private float distanceBetween;
       private GameObject rearBodyPart;
       private GameObject frontBodyPart;
+
       private void Start()
       {
             Application.targetFrameRate = 60;
@@ -25,11 +26,17 @@ public class SnakeManager : MonoBehaviour
                   rearBodyPart = bodyParts[i];//rear
                   frontBodyPart = bodyParts[i - 1];//front
                   distanceBetween = Vector3.Distance(frontBodyPart.transform.position, rearBodyPart.transform.position);
-                  float T = Time.deltaTime * (distanceBetween / minDistanceBetween) * (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z));
+
+                  float T = (distanceBetween / minDistanceBetween) *
+                   Mathf.Sqrt(Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2));
                   if (T >= 0.5f)
                         T = 0.5f;
-                  rearBodyPart.transform.position = Vector3.Slerp(rearBodyPart.transform.position, frontBodyPart.transform.position, T);
-                  rearBodyPart.transform.rotation = Quaternion.Slerp(rearBodyPart.transform.rotation, frontBodyPart.transform.rotation, T);
+
+                  rearBodyPart.transform.position = Vector3.Lerp(rearBodyPart.transform.position, frontBodyPart.transform.position, T);
+                  Quaternion targetRotation = new Quaternion(0f, frontBodyPart.transform.rotation.y, 0f, 0f);
+                  rearBodyPart.transform.rotation = Quaternion.Lerp(rearBodyPart.transform.rotation, targetRotation, T);
+
+
             }
       }
 
