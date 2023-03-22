@@ -33,11 +33,12 @@ public class AIHeadMovement : MonoBehaviour
             Vector3 fruitpos = GameManager.instance.fruitSpawner.fruitObjects[Random.Range(0, GameManager.instance.fruitSpawner.fruitObjects.Count)].transform.position;
             desiredPoint = new Vector3(fruitpos.x, 0, fruitpos.z);
             Selected = true;
+
       }
       public void MoveEnemy()
       {
             Vector3 direction = desiredPoint - snakeManager.head.transform.position;
             snakeManager.rb.velocity = new Vector3(direction.normalized.x, 0f, direction.normalized.z) * snakeManager.speed;
-
+            snakeManager.head.transform.rotation = Quaternion.Euler(0, Formulas.VectorFormulas.getAngleInDeg(new Vector3(direction.normalized.z, 0, direction.normalized.x), new Vector3(0, 0, 0)), 0);
       }
 }

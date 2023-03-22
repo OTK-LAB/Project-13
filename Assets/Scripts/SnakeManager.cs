@@ -32,9 +32,10 @@ public class SnakeManager : MonoBehaviour
                   if (T >= 0.5f)
                         T = 0.5f;
 
-                  rearBodyPart.transform.position = Vector3.Lerp(rearBodyPart.transform.position, frontBodyPart.transform.position, T);
-                  Quaternion targetRotation = new Quaternion(0f, frontBodyPart.transform.rotation.y, 0f, 0f);
-                  rearBodyPart.transform.rotation = Quaternion.Lerp(rearBodyPart.transform.rotation, targetRotation, T);
+                  rearBodyPart.transform.position = Vector3.Slerp(rearBodyPart.transform.position, frontBodyPart.transform.position, T);
+
+                  rearBodyPart.transform.rotation = Quaternion.Slerp(rearBodyPart.transform.rotation, frontBodyPart.transform.rotation, T);
+
 
 
             }
