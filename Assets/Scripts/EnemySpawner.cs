@@ -10,6 +10,11 @@ public class EnemySpawner : MonoBehaviour
       public List<GameObject> EnemyList;
       public int maxSize;
 
+      private void Start()
+      {
+            for (int i = 0; i < 10; i++)
+                  CreateEnemy();
+      }
       void Update()
       {
             time += Time.deltaTime;

@@ -18,9 +18,14 @@ public class FruitSpawner : MonoBehaviour
                   onGet,
                   onRelease,
                   onDestroy,
-                  maxSize: 1000
+                  maxSize: maxSize
                   );
 
+      }
+      private void Start()
+      {
+            for (int i = 0; i < 25; i++)
+                  fruitObjectsPool.Get();
       }
       public void onDestroy(GameObject obj)
       {

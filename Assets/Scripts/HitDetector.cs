@@ -11,7 +11,7 @@ public class HitDetector : MonoBehaviour
             if (other.gameObject.tag == "Fruit")
             {
                   GameManager.instance.fruitSpawner.fruitObjectsPool.Release(other.gameObject);
-                  pointManager.points += 1;
+                  pointManager.points += 4;
             }
 
             else if (other.gameObject.tag == "Player" && !snakeManager.bodyParts.Contains(other.gameObject.transform.parent.gameObject))

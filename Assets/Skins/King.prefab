@@ -387,6 +387,7 @@ MonoBehaviour:
   speed: 10
   minDistanceBetween: 3
   scaleManager: {fileID: 4678464654355115950}
+  entityType: 0
 --- !u!114 &9032632583568929328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15418,6 +15419,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
+  userName: 
+  snakeManager: {fileID: 9032632583568929343}
+  names:
+  - PixelPirate
+  - SonicSlinger
+  - ToxicTornado
+  - CrimsonChaos
+  - RogueRider
+  - GlitchGunner
+  - NightNinja
+  - CosmicCyclone
+  - LunarLancer
+  - Ironclad
+  - GalacticGuardian
+  - ViralVortex
+  - NeonNemesis
+  - StardustStriker
+  - ShadowSlayer
+  - Firestarter
+  - VenomVindicator
+  - ElectricEnigma
+  - BlazeBlitzer
+  - PlasmaPilot
+  - StormySamurai
+  - CyberCrusader
+  - ArcaneAssassin
+  - DragonDominator
+  - PhoenixFury
+  - NinjaNebula
+  - WarriorWizard
+  - PolarPaladin
+  - MightyMage
+  - GravityGuru
+  - MetalMarauder
+  - CrystalCrafter
+  - GalacticGladiator
+  - CosmicConqueror
+  - SavageSorcerer
+  - Mastermind
+  - EternalEmperor
+  - MysticalMercenary
+  - AncientAlien
+  - SoulSavior
+  - TimeTraveler
+  - DeathDealer
+  - DimensionDestroyer
+  - GrimGrimoire
+  - InfiniteInquisitor
+  - OblivionOverlord
+  - RadiantRanger
+  - ZeroZenith
+  - NeptuneNemesis
 --- !u!1 &9032632583585612612
 GameObject:
   m_ObjectHideFlags: 0

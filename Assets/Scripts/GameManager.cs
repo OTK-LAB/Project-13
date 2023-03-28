@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
       public static GameManager instance;
       public FruitSpawner fruitSpawner;
       public EnemySpawner enemySpawner;
+      public GameObject player;
       private void Awake()
       {
             if (instance != this && instance != null) Destroy(this);

@@ -15,11 +15,12 @@ public class SnakeManager : MonoBehaviour
       private float distanceBetween;
       private GameObject rearBodyPart;
       private GameObject frontBodyPart;
-
+      public EntityType entityType;
       private void Start()
       {
             Application.targetFrameRate = 60;
       }
+
       void FixedUpdate()
       {
             if (rb.velocity == Vector3.zero) return;
@@ -28,9 +29,8 @@ public class SnakeManager : MonoBehaviour
                   rearBodyPart = bodyParts[i];//rear
                   frontBodyPart = bodyParts[i - 1];//front
                   distanceBetween = Vector3.Distance(frontBodyPart.transform.position, rearBodyPart.transform.position);
-
-                  float T = (distanceBetween / minDistanceBetween)
-                  * Mathf.Pow((scaleManager.initialScale.x / scaleManager.gameObject.transform.localScale.x), 3);
+                  minDistanceBetween = 3 * Mathf.Pow((scaleManager.gameObject.transform.localScale.x / scaleManager.initialScale.x), 2);
+                  float T = (distanceBetween / minDistanceBetween);
                   if (T >= 0.5f)
                         T = 0.5f;
 
@@ -42,6 +42,16 @@ public class SnakeManager : MonoBehaviour
 
             }
       }
+      public void CreateBodyPart()
+      {
+            GameObject newBodyPart = Instantiate(bodyPartPrefab, bodyParts[bodyParts.Count - 1].transform.position, Quaternion.identity);
+            newBodyPart.transform.SetParent(this.gameObject.transform);
+            newBodyPart.transform.Find("Mesh").localScale = bodyParts[1].transform.parent.GetComponent<SnakeManager>().scaleManager.gameObject.transform.localScale;
+            bodyParts.Add(newBodyPart);
+      }
 
-
+}
+public enum EntityType
+{
+      AI, User
 }

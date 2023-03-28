@@ -24,15 +24,15 @@ public class ScaleManager : MonoBehaviour
       {
             if (bodyPartType != BodyPartType.Head) return;
             this.gameObject.transform.localScale = (initialScale + initialScale * ((float)pointManager.points / 50f));
-            if (this.gameObject.transform.localScale.x > initialScale.x * 5f)
-                  this.gameObject.transform.localScale = initialScale * 5f;
+            if (this.gameObject.transform.localScale.x > initialScale.x * 3f)
+                  this.gameObject.transform.localScale = initialScale * 3f;
       }
       public void HandleBodyScaling()
       {
             if (bodyPartType != BodyPartType.Body) return;
             this.gameObject.transform.localScale = (initialScale + initialScale * ((float)pointManager.points / 50f)) * 0.75f;
-            if (this.gameObject.transform.localScale.x > initialScale.x * 5f * 0.75f)
-                  this.gameObject.transform.localScale = initialScale * 5f * 0.75f;
+            if (this.gameObject.transform.localScale.x > initialScale.x * 3f * 0.75f)
+                  this.gameObject.transform.localScale = initialScale * 3f * 0.75f;
       }
       public void HandleYAxis()
       {
