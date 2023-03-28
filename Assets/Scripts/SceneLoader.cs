@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 public class SceneLoader : MonoBehaviour
 {
-      public Animation anim;
+      public GameObject mainMenuStart, mainMenuLootBox, mainMenuText;
+
       public void LoadGameScene()
       {
-            StartCoroutine("SceneLoadWithDelay");
+            mainMenuLootBox.GetComponent<RectTransform>().DOAnchorPosX(-900, 1f);
+            mainMenuStart.GetComponent<RectTransform>().DOAnchorPosX(-900, 1f);
+            mainMenuText.GetComponent<RectTransform>().DOAnchorPosY(500, 1f).OnComplete(() =>
+            SceneManager.LoadSceneAsync(1));
       }
       public void LoadMenuScene()
       {
-            AsyncOperation sceneLoadOperation = SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync(0);
       }
-      private IEnumerator SceneLoadWithDelay()
-      {
-            anim.Play();
-            yield return new WaitForSeconds(1f);
-            AsyncOperation sceneLoadOperation = SceneManager.LoadSceneAsync(1);
-      }
+
 }

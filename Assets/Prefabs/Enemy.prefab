@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1775529833839244686}
   - component: {fileID: 5120329684267298640}
   - component: {fileID: 9006611255253439603}
+  - component: {fileID: 3013708713503869733}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Player
@@ -56,7 +57,8 @@ MonoBehaviour:
   head: {fileID: 4756736028920342358}
   rb: {fileID: 4756736028920342361}
   speed: 8
-  minDistanceBetween: 15
+  minDistanceBetween: 3
+  scaleManager: {fileID: 9202041090206573190}
 --- !u!114 &5120329684267298640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +91,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &3013708713503869733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775529833839244685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9cf6e3ff142ae4f9c365591b111a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
 --- !u!1 &4756736028151920275
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756736028151920275}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: -1.0176561}
+  m_LocalPosition: {x: 0, y: -0.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -232,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2259763ddde78449b9f363f041f842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Point: 0
+  pointManager: {fileID: 3013708713503869733}
   bodyPartType: 1
   initialScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4756736028920342358
@@ -260,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756736028920342358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: -0.017656088}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -397,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2259763ddde78449b9f363f041f842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Point: 0
+  pointManager: {fileID: 3013708713503869733}
   bodyPartType: 0
   initialScale: {x: 0, y: 0, z: 0}
 --- !u!114 &9202041090206573191
@@ -413,3 +428,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeManager: {fileID: 1775529833839244686}
+  pointManager: {fileID: 3013708713503869733}
