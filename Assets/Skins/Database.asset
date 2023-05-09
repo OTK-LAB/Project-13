@@ -35,11 +35,24 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 0000000001000000020000000300000004000000
-    _keys: 0000000001000000020000000300000004000000
+    _keyValues: 000000000100000002000000030000000400000005000000
+    _keys: 000000000100000002000000030000000400000005000000
     _values:
-    - {fileID: 8289719155728141401, guid: 7bf244016470d4e4d9790a9332d3d598, type: 3}
-    - {fileID: 3156734356381445048, guid: fa11a0053fae7584d9c8c9293241bf18, type: 3}
-    - {fileID: 2483049528286079828, guid: e12832f8b399bf147b1802140827c44a, type: 3}
-    - {fileID: 9159642463157282459, guid: ea64aa35c01e85b4db19943951f6d6c0, type: 3}
-    - {fileID: 9032632583568929342, guid: fc3f549b2c4efc94cb39112b208baa83, type: 3}
+    - gameObject: {fileID: 9159642463157282459, guid: 4092f107957e1514aab3f11ed93e6c94,
+        type: 3}
+      price: 0
+    - gameObject: {fileID: 8289719155728141401, guid: 7bf244016470d4e4d9790a9332d3d598,
+        type: 3}
+      price: 0
+    - gameObject: {fileID: 3156734356381445048, guid: fa11a0053fae7584d9c8c9293241bf18,
+        type: 3}
+      price: 0
+    - gameObject: {fileID: 2483049528286079828, guid: e12832f8b399bf147b1802140827c44a,
+        type: 3}
+      price: 0
+    - gameObject: {fileID: 9159642463157282459, guid: ea64aa35c01e85b4db19943951f6d6c0,
+        type: 3}
+      price: 0
+    - gameObject: {fileID: 9032632583568929342, guid: fc3f549b2c4efc94cb39112b208baa83,
+        type: 3}
+      price: 0

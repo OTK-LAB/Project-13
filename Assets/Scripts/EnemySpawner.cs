@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPos = new Vector3(RandomPos.x, 0.5f, RandomPos.z);
             GameObject obj = Instantiate(EnemyPrefab, new Vector3(0, 0.5f, 0), Quaternion.identity);
             SnakeManager snakeManager = obj.GetComponent<SnakeManager>();
+            snakeManager.entityType = EntityType.AI;
             snakeManager.head.transform.position = spawnPos;
             foreach (GameObject part in snakeManager.bodyParts) part.transform.position = spawnPos;
             EnemyList.Add(obj);

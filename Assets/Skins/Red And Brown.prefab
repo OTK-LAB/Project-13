@@ -284,7 +284,7 @@ MonoBehaviour:
   speed: 10
   minDistanceBetween: 3
   scaleManager: {fileID: 2288661806408890052}
-  entityType: 0
+  entityType: 1
 --- !u!114 &2483049528286079834
 MonoBehaviour:
   m_ObjectHideFlags: 0

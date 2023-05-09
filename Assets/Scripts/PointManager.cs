@@ -15,6 +15,8 @@ public class PointManager : MonoBehaviour
       {
             if (snakeManager.entityType == EntityType.AI)
                   userName = names[Random.Range(0, names.Count - 1)] + Random.Range(0, 128);
+            else if (snakeManager.entityType == EntityType.User)
+                  userName = SaveSystem.gameFiles.userName;
       }
       private void Update()
       {

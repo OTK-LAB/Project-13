@@ -12,6 +12,7 @@ public class PlayerHitDetector : MonoBehaviour
             {
                   GameManager.instance.fruitSpawner.fruitObjectsPool.Release(other.gameObject);
                   pointManager.points += 1;
+                  SaveSystem.gameFiles.currency += 1;
             }
             else if (other.gameObject.tag == "Player" && !snakeManager.bodyParts.Contains(other.gameObject.transform.parent.gameObject))
                   Time.timeScale = 0;

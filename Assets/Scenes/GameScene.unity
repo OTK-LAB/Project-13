@@ -593,7 +593,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324621370}
-  m_LocalRotation: {x: 0.29404098, y: -4.857904e-15, z: 2.2457522e-15, w: 0.95579284}
+  m_LocalRotation: {x: 0.29404098, y: -1.6193016e-15, z: 1.0446435e-15, w: 0.95579284}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -654,7 +654,10 @@ MonoBehaviour:
   time: 0
   gameArena: {fileID: 1611200088}
   fruitPrefabs:
-  - {fileID: 5267302242510845447, guid: 548aaaa914c35314aaa166ae5a15ffee, type: 3}
+  - {fileID: 6843818096890835637, guid: ccaa8b20fdc0c314db25a753c83baa94, type: 3}
+  - {fileID: 3872706222871228112, guid: 117e5a25f96eec94a9573322df60776c, type: 3}
+  - {fileID: 175074479058559956, guid: d03636785c4f0ba40b35a0599c9a3e75, type: 3}
+  - {fileID: 5852521276835844245, guid: 11984284039169a428b9079a991cf10d, type: 3}
   fruitObjects: []
   maxSize: 2000
 --- !u!114 &344015758
@@ -823,6 +826,7 @@ GameObject:
   - component: {fileID: 533081464}
   - component: {fileID: 533081463}
   - component: {fileID: 533081462}
+  - component: {fileID: 533081466}
   m_Layer: 0
   m_Name: Wall 4
   m_TagString: Untagged
@@ -863,7 +867,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 290d34b7c6dc13147a455231fe7c70f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -908,6 +912,20 @@ Transform:
   m_Father: {fileID: 1611200089}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &533081466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533081461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d903774319da0149aa9b3d8afb92257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rdrr: {fileID: 533081463}
+  scale: {x: 5, y: 5}
 --- !u!1 &623671293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,10 +1323,10 @@ MonoBehaviour:
       - m_Target: {fileID: 344015759}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: RespawnPlayer
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: SnakeManager, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1448,8 +1466,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1466,10 +1484,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.95
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -1601,7 +1619,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.5
+  m_fontSize: 41
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2021,6 +2039,7 @@ GameObject:
   - component: {fileID: 1086876200}
   - component: {fileID: 1086876199}
   - component: {fileID: 1086876198}
+  - component: {fileID: 1086876202}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2062,7 +2081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: 39921805327625b43a756e7dc8b4dc81, type: 3}
+  - {fileID: 2100000, guid: 8b0f991158a5c5c4bb73679da0f72940, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2101,12 +2120,26 @@ Transform:
   m_GameObject: {fileID: 1086876197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: 12, y: 1, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1611200089}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086876202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086876197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d903774319da0149aa9b3d8afb92257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rdrr: {fileID: 1086876199}
+  scale: {x: 50, y: 50}
 --- !u!1 &1113510955
 GameObject:
   m_ObjectHideFlags: 3
@@ -2520,6 +2553,7 @@ GameObject:
   - component: {fileID: 1238071326}
   - component: {fileID: 1238071325}
   - component: {fileID: 1238071324}
+  - component: {fileID: 1238071328}
   m_Layer: 0
   m_Name: Wall 3
   m_TagString: Untagged
@@ -2560,7 +2594,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 290d34b7c6dc13147a455231fe7c70f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2605,6 +2639,20 @@ Transform:
   m_Father: {fileID: 1611200089}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1238071328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238071323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d903774319da0149aa9b3d8afb92257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rdrr: {fileID: 1238071325}
+  scale: {x: 5, y: 5}
 --- !u!1 &1238178093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,8 +2720,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2690,10 +2738,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.95
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -3298,8 +3346,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3316,10 +3364,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.95
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -3414,6 +3462,7 @@ GameObject:
   - component: {fileID: 1623668214}
   - component: {fileID: 1623668213}
   - component: {fileID: 1623668212}
+  - component: {fileID: 1623668216}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -3454,7 +3503,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 290d34b7c6dc13147a455231fe7c70f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3499,6 +3548,20 @@ Transform:
   m_Father: {fileID: 1611200089}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623668216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623668211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d903774319da0149aa9b3d8afb92257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rdrr: {fileID: 1623668213}
+  scale: {x: 5, y: 5}
 --- !u!1 &1792801900
 GameObject:
   m_ObjectHideFlags: 3
@@ -3682,6 +3745,7 @@ GameObject:
   - component: {fileID: 1970534379}
   - component: {fileID: 1970534378}
   - component: {fileID: 1970534377}
+  - component: {fileID: 1970534381}
   m_Layer: 0
   m_Name: Wall 2
   m_TagString: Untagged
@@ -3722,7 +3786,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 290d34b7c6dc13147a455231fe7c70f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3767,6 +3831,20 @@ Transform:
   m_Father: {fileID: 1611200089}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1970534381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970534376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d903774319da0149aa9b3d8afb92257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rdrr: {fileID: 1970534378}
+  scale: {x: 5, y: 5}
 --- !u!1 &2050857142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,7 +3915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0, g: 1, b: 0.050011873, a: 1}
-  outlineWidth: 3
+  outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

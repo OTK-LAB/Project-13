@@ -8,7 +8,7 @@ public class SkinManager : MonoBehaviour
       public CinemachineFreeLook cinemachineFreeLook;
       private void Start()
       {
-            ChangePlayerSkin(SkinID.Basketball);
+            ChangePlayerSkin(SaveSystem.gameFiles.equippedSkin);
       }
 
       public void ChangePlayerSkin(SkinID skinID)
@@ -16,7 +16,7 @@ public class SkinManager : MonoBehaviour
             GameObject oldPlayerObject = cinemachineFreeLook.LookAt.parent.gameObject;
             oldPlayerObject.SetActive(false);
             Destroy(oldPlayerObject);
-            GameObject newPlayerObject = Instantiate(Database.skinDatabase[skinID], Vector3.zero, Quaternion.identity);
+            GameObject newPlayerObject = Instantiate(Database.skinDatabase[skinID].gameObject, Vector3.zero, Quaternion.identity);
             cinemachineFreeLook.LookAt = newPlayerObject.transform.Find("Head");
             cinemachineFreeLook.Follow = newPlayerObject.transform.Find("Head");
             newPlayerObject.transform.Find("Head").gameObject.GetComponent<CameraManager>().cinemachineFreeLook = cinemachineFreeLook;

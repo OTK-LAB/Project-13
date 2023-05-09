@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour
       }
       public void LoadMenuScene()
       {
+            Time.timeScale = 1;
             SceneManager.LoadSceneAsync(0);
       }
 
